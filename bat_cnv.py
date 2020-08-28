@@ -8,11 +8,9 @@ from os.path import isfile, join
 from_path = sys.argv[1]
 to_path = sys.argv[2]
 
-onlyfiles = [f for f in listdir(from_path) if isfile(join(from_path, f))]
+xfr_list = [f for f in listdir(from_path) if isfile(join(from_path, f))]
 
-xfr_list = []
-
-for f in onlyfiles:
+for f in xfr_list:
 
     file = str(f)
     f_name = file.rsplit('.', 1)[0]
@@ -20,8 +18,8 @@ for f in onlyfiles:
 
     if f_type == 'svg':
                          # python3 ico_convert.py <svg_filename_in> <png_filename_out> <ico_filename_out> <hight> <width>
-        subprocess.Popen(["python3", 
-                          "ico_convert.py",
+        subprocess.Popen(['python3', 
+                          'ico_convert.py',
                           from_path + '/' + file,
                           to_path + '/' + f_name + '.png',
                           to_path + '/' + f_name + '.ico',
